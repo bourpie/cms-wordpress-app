@@ -27,6 +27,23 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   return json.data
 }
 
+export async function getGeneralSettings() {
+  const data = await fetchAPI(
+    `
+     {
+      generalSettings {
+        title
+        language
+        description
+        url
+      }
+    }
+    
+    `
+  )
+  return data;
+}
+
 export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   const data = await fetchAPI(
     `
